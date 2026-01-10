@@ -1,14 +1,8 @@
 import discord 
 from luna.core.message_register import MessageCommandRegister
-from luna.services.google_genai import send_prompt
 
-async def luna_callback(message: discord.Message, *args):
-  response = send_prompt(args)
-
-  if not response:
-    await message.reply("Ocorreu um erro")
-
-  await message.channel.send(response)
+async def ping_command(message: discord.Message, args):
+  await message.reply("Pong!")
 
 def message_setup(register: MessageCommandRegister):
-  register.register_command_message("hi", luna_callback)
+  register.register_command_message("ping", ping_command)
