@@ -13,7 +13,7 @@ class LunaClient(discord.Client):
   async def on_ready(self):
     print(f"{self.user.name} is ready!")
 
-    self.tree.sync()
+    await self.tree.sync()
 
   def start_luna(self):
     try:
