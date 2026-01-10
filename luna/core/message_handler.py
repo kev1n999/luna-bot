@@ -1,6 +1,6 @@
 import os
 import importlib.util  
-from luna.config.message_command import MessageCommandRegister
+from .message_register import MessageCommandRegister
 
 def load_messages(root_dir: str, register: MessageCommandRegister) -> None:
   messages_folder = os.path.join(root_dir, "messages")

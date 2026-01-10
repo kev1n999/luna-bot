@@ -1,6 +1,6 @@
 import discord 
 from discord import app_commands 
-from .message_command import MessageCommandRegister
+from luna.core.message_register import MessageCommandRegister
 
 # Main class of LunaBot to connect the discord client
 class LunaClient(discord.Client):
@@ -19,7 +19,7 @@ class LunaClient(discord.Client):
     all_commands = self.message_commands.get_all_command_messages()
 
     if all_commands:
-      print(f"Message Commands:\n{all_commands}")
+      print(f"Message Commands:\n{[k for k, _ in all_commands.items()]}")
     
     await self.tree.sync()
   

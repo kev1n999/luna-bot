@@ -1,5 +1,5 @@
 import discord 
-from luna.config.message_command import MessageCommandRegister
+from luna.core.message_register import MessageCommandRegister
 
 async def ping_callback(message: discord.Message, *args):
   await message.channel.send("Pong!")
