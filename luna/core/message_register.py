@@ -2,7 +2,7 @@ from typing import Coroutine, Dict
 
 # Class to register the message commands
 class MessageCommandRegister:
-  def __init__(self):
+  def __init__(self) -> None:
     # Dict to store the message commands(key<str> = value<Coroutine> = command_name = command_callback)
     self.commands: Dict[str, Coroutine] = {}
 
