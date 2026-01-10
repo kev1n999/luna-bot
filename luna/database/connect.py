@@ -1,7 +1,7 @@
 import pymongo 
 
 # Function to connect with luna.db in MongoDB 
-def lunaDatabase(mongo_uri: str):
+def lunaDatabase(mongo_uri: str) -> None:
   mongo_client = pymongo.MongoClient(mongo_uri)
 
   try:

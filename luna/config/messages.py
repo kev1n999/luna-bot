@@ -1,9 +1,8 @@
 import os
 import importlib.util  
-import discord 
-from typing import Coroutine
+from luna.config.message_command import MessageCommandRegister
 
-def load_messages(root_dir: str, app: discord.Client):
+def load_messages(root_dir: str, register: MessageCommandRegister) -> None:
   messages_folder = os.path.join(root_dir, "messages")
 
   for categorys in os.listdir(messages_folder):
@@ -20,11 +19,9 @@ def load_messages(root_dir: str, app: discord.Client):
 
         spec = importlib.util.spec_from_file_location(module_name, module_path)
         module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
 
         if hasattr(module, "message_setup"):
-          module.message_setup(app)
-        
-        print("\nCommand Messages:\n")
-        print(files[:-3] if files else "No message commands was founded")
+          module.message_setup(register)
       except Exception as err:
         print(err)

@@ -2,7 +2,7 @@ import os
 import importlib.util
 from discord.app_commands import CommandTree
 
-def load_cogs(root_dir: str, app: CommandTree):
+def load_cogs(root_dir: str, app: CommandTree) -> None:
   # The directory to cogs folder
   cogs_folder = os.path.join(root_dir, "cogs")
 
