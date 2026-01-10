@@ -1,0 +1,30 @@
+import os
+import importlib.util  
+import discord 
+from typing import Coroutine
+
+def load_messages(root_dir: str, app: discord.Client):
+  messages_folder = os.path.join(root_dir, "messages")
+
+  for categorys in os.listdir(messages_folder):
+    if "__init__" in categorys:
+      continue 
+
+    for files in os.listdir(f"{messages_folder}/{categorys}"):
+      if not files.endswith(".py") or files.startswith("__init__"):
+        continue 
+
+      try:
+        module_name = f"messages.{categorys}.{files[:-3]}"
+        module_path = os.path.join(messages_folder, categorys, files)
+
+        spec = importlib.util.spec_from_file_location(module_name, module_path)
+        module = importlib.util.module_from_spec(spec)
+
+        if hasattr(module, "message_setup"):
+          module.message_setup(app)
+        
+        print("\nCommand Messages:\n")
+        print(files[:-3] if files else "No message commands was founded")
+      except Exception as err:
+        print(err)

@@ -6,10 +6,10 @@ class LunaClient(discord.Client):
     super().__init__(
       intents=discord.Intents.all()
     )
-
+    
     self.bot_token = bot_token
     self.tree = app_commands.CommandTree(self)
-
+    
   async def on_ready(self):
     print(f"{self.user.name} is ready!")
 
