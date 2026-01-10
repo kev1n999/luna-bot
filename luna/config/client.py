@@ -18,6 +18,7 @@ class LunaClient(discord.Client):
     print(f"{self.user.name} is ready!")
     all_commands = self.message_commands.get_all_command_messages()
 
+    # Display the all message commands if exists
     if all_commands:
       print(f"Message Commands:\n{[k for k, _ in all_commands.items()]}")
     
@@ -35,8 +36,10 @@ class LunaClient(discord.Client):
       return 
     
     name, *args = message_content.split()
+    # Get the message command by name of dict
     message_command = self.message_commands.get_command_message(name)
 
+    # Execute the callback of message command
     if message_command:
       await message_command(message, args)
 
