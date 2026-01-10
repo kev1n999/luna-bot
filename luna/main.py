@@ -3,7 +3,8 @@ if __name__ == "__main__":
   from .config.client import LunaClient
   from .config.constants import BOT_TOKEN
   from .config.cogs import load_cogs
-
+  from .config.luna_db import luna_db
+  
   ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
   # Create the instance of the LunaClient 

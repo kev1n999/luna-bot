@@ -14,7 +14,7 @@ class LunaClient(discord.Client):
     print(f"{self.user.name} is ready!")
 
     await self.tree.sync()
-
+    
   def start_luna(self):
     try:
       self.run(self.bot_token)

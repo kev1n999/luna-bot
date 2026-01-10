@@ -5,3 +5,4 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("TOKEN")
 DEFAULT_PREFIX = "lu!"
+MONGO_URI = os.getenv("MONGO_URI")
