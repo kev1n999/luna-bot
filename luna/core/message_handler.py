@@ -3,7 +3,7 @@ import importlib.util
 from .message_register import MessageCommandRegister
 
 def load_messages(root_dir: str, register: MessageCommandRegister) -> None:
-  messages_folder = os.path.join(root_dir, "messages")
+  messages_folder = os.path.join(root_dir, "commands", "messages")
 
   for categorys in os.listdir(messages_folder):
     if "__init__" in categorys:
@@ -14,7 +14,7 @@ def load_messages(root_dir: str, register: MessageCommandRegister) -> None:
         continue 
 
       try:
-        module_name = f"messages.{categorys}.{files[:-3]}"
+        module_name = f"commands.messages.{categorys}.{files[:-3]}"
         module_path = os.path.join(messages_folder, categorys, files)
 
         spec = importlib.util.spec_from_file_location(module_name, module_path)

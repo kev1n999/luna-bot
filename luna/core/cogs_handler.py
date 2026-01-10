@@ -4,7 +4,7 @@ from discord.app_commands import CommandTree
 
 def load_cogs(root_dir: str, app: CommandTree) -> None:
   # The directory to cogs folder
-  cogs_folder = os.path.join(root_dir, "cogs")
+  cogs_folder = os.path.join(root_dir, "commands", "cogs")
 
   # Acess the caregorys(sub-folders) into cogs folder(main folder)
   for categorys in os.listdir(cogs_folder):
@@ -16,7 +16,7 @@ def load_cogs(root_dir: str, app: CommandTree) -> None:
         continue 
       
       try:
-        module_name = f"cogs.{categorys}.{files[:-3]}"
+        module_name = f"commands.cogs.{categorys}.{files[:-3]}"
         module_path = os.path.join(cogs_folder, categorys, files)
 
         spec = importlib.util.spec_from_file_location(module_name, module_path)
