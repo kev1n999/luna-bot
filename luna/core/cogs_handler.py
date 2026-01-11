@@ -32,8 +32,5 @@ def load_cogs(root_dir: str, app: CommandTree) -> None:
         if hasattr(module, "setup"):
           # Execute the function to add a new command to the CommandTree 
           module.setup(app)
-        
-        print("Loaded commands:\n")
-        print(files[:-3], end="\n")
       except Exception as err:
         print(err)
