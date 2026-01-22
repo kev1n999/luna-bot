@@ -11,3 +11,4 @@ async def agent_message(message: discord.Message, args):
   
 def message_setup(register: MessageCommandRegister):
   register.register_command_message("luna", agent_message)
+  
