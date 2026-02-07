@@ -1,5 +1,5 @@
 if __name__ == "__main__":
-  import os 
+  import os
   from .config.client import LunaClient
   from .config.constants import BOT_TOKEN, DEFAULT_PREFIX
   from .core.cogs_handler import load_cogs
@@ -12,7 +12,7 @@ if __name__ == "__main__":
   # Load message commands
   message_command_register = MessageCommandRegister()
   load_messages(ROOT_DIR, message_command_register)
-  # Create the instance of the LunaClient 
+  # Create the instance of the LunaClient
   luna = LunaClient(bot_token=BOT_TOKEN, command_prefix=DEFAULT_PREFIX, message_commands=message_command_register)
   # Load cogs
   load_cogs(ROOT_DIR, luna.tree)
