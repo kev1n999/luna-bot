@@ -11,7 +11,7 @@ class TaskOptions(ui.LayoutView):
     modal = TaskFields()
     await interaction.response.send_modal(modal)
 
-  @row.button(label="Vself, interaction: discord.Interactioniew", style=ButtonStyle.secondary)
+  @row.button(label="Get tasks", style=ButtonStyle.primary)
   async def view_task(self, interaction: discord.Interaction, button: ui.BUtton):
     pass 
 
