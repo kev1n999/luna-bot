@@ -1,21 +1,18 @@
 from enum import Enum
 from luna.config.luna_db import todolist_collection
-from luna.core.errors_handler import TaskExists
+from luna.core.errors_handler import TaskNotExists, TaskExists
+from bson import ObjectId
 
 class Status(Enum):
-  CREATED = 1
-  PENDING = 1 
-  COMPLETED = 1 
+  CREATED = "created"
+  PENDING = "pending" 
+  COMPLETED = "completed"
 
 class Task:
-  def __init__(self, name: str, description: str, status: Status=Status.CREATED):
-    self.__name = name 
-    self.__description = description 
-    self.__status = status
-  
-  def create_task(self, user_id: int) -> bool:
+  @staticmethod
+  def create_task(name: str, description: str, status: Status=Status.CREATED, *, user_id: int) -> None:
     task_exists = todolist_collection.find_one({
-      "name": self.__name,
+      "name": name,
       "user_id": user_id, 
     })
 
@@ -24,14 +21,30 @@ class Task:
     
     try:
       todolist_collection.insert_one({ 
-        "name": self.__name,
-        "description": self.__description,
-        "status": "created",
+        "name": name,
+        "description": description,
+        "status": status.value,
         "user_id": user_id, 
       })
-      
-      return True 
     except Exception as err:
       print(f"an error ocurred to create the task\n{err}")
-      return False 
     
+  @staticmethod 
+  def delete_task(task_id: str=None, *, user_id: int) -> None:
+    if task_id is None:
+      tasks_exists = todolist_collection.find_one({ "user_id": user_id })
+      if not tasks_exists:
+        raise TaskNotExists("Tasks not found!")
+      
+      todolist_collection.delete_many({ "user_id": user_id })
+      return 
+    
+    task_exists = todolist_collection.find_one({ "_id": ObjectId(task_id.strip()) })
+
+    if not task_exists:
+      raise TaskNotExists("Task doesn't exists!")
+    
+    try:
+      todolist_collection.delete_one({ "_id": ObjectId(task_id.strip()) })
+    except Exception as err:
+      print(f"an error ocurred to delete the task\n{err}")
