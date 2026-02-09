@@ -10,6 +10,25 @@ class Status(Enum):
 
 class Task:
   @staticmethod
+  def find_tasks(id: str=None, *, user_id: int=None) -> list | None:
+    if id == None:
+      if not user_id:
+        raise ValueError("User id is missing!")
+      
+      task_by_user_id = todolist_collection.find_one({ "user_id": user_id })
+      if not task_by_user_id:
+        raise TaskNotExists("Tasks not found by this user!")
+      
+      all_user_tasks = list(todolist_collection.find({ "user_id": user_id }))
+      return all_user_tasks
+    
+    task_by_id = todolist_collection.find_one({ "_id": ObjectId(id.strip()) })
+
+    if not task_by_id:
+      raise TaskNotExists("Tasks not found!")
+    return task_by_id
+
+  @staticmethod
   def create_task(name: str, description: str, status: Status=Status.CREATED, *, user_id: int) -> None:
     task_exists = todolist_collection.find_one({
       "name": name,
@@ -17,7 +36,7 @@ class Task:
     })
 
     if task_exists:
-      raise TaskExists("Essa tarefa já existe!")
+      raise TaskExists("Task already exists!")
     
     try:
       todolist_collection.insert_one({ 
