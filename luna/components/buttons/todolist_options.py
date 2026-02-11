@@ -4,6 +4,7 @@ from discord import ButtonStyle
 from luna.components.modals.todolist_fields import TaskFields, DeleteTaskById, FindTaskById
 from luna.database.queries.todolist import Task
 from luna.core.errors_handler import TaskNotExists
+from luna.utils.find_tasks import find_tasks
 
 class DeleteTaskButtons(ui.LayoutView):
   row = ui.ActionRow()
@@ -37,12 +38,13 @@ class FindTasksButton(ui.LayoutView):
 
     try:
       founded_tasks = task.find_tasks(user_id=interaction.user.id) 
-      await interaction.response.send_message(content=founded_tasks, ephemeral=True)
+      await find_tasks(interaction, founded_tasks)
     except Exception as err:
       if isinstance(err, TaskNotExists):
         await interaction.response.send_message(content="Tasks not found!", ephemeral=True)
       else: 
         await interaction.response.send_message(content="An error ocurred to fetch tasks!", ephemeral=True)
+      print(err)
 
 class TaskOptions(ui.LayoutView):
   row = ui.ActionRow()

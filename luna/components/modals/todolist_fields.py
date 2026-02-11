@@ -1,6 +1,7 @@
 import discord 
 from discord import ui, TextStyle
 from luna.database.queries.todolist import Task
+from luna.utils.find_tasks import find_tasks
 
 class FindTaskById(ui.Modal):
   def __init__(self):
@@ -19,8 +20,8 @@ class FindTaskById(ui.Modal):
     task = Task()
 
     try:
-      founded_tasks = task.find_tasks(id=self.task_id.value)
-      await interaction.response.send_message(content=founded_tasks, ephemeral=True)
+      founded_tasks = task.find_tasks(id=self.task_id.value) 
+      await find_tasks(interaction, founded_tasks)
     except Exception as err:
       print(f"An error ocurred to fetch tasks!\n{err}")
       await interaction.response.send_message(content="an error ocurred to fetch tasks!!", ephemeral=True)
