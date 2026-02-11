@@ -6,7 +6,7 @@ def format_json(string: str) -> str:
   return string.replace("'", '"').replace("ObjectId", "").replace("(", "").replace(")", "")
 
 async def find_tasks(interaction: discord.Interaction, founded_tasks: list | dict):
-  parse = format_json(str(next(tasks for tasks in founded_tasks)))
+  parse = format_json(str([tasks for tasks in founded_tasks]))
 
   json_serialize = json.loads(format_json(str(founded_tasks)) if not isinstance(founded_tasks, list) else parse)
   with open("tasks.json", "w", encoding="utf-8") as tasks_json_file:
