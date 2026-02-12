@@ -49,7 +49,7 @@ class Task:
       print(f"an error ocurred to create the task\n{err}")
     
   @staticmethod 
-  def delete_task(task_id: str=None, *, user_id: int) -> None:
+  def delete_task(task_id: str=None, *, user_id: int=None) -> None:
     if task_id is None:
       tasks_exists = todolist_collection.find_one({ "user_id": user_id })
       if not tasks_exists:

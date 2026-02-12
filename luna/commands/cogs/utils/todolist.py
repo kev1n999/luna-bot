@@ -12,7 +12,7 @@ class TodoListCommand(app_commands.Command):
 
   async def callback(self, interaction: discord.Interaction):
     view = TaskOptions()
-    await interaction.response.send_message(view=view)
+    await interaction.response.send_message(view=view, ephemeral=True)
     
 def setup(app: app_commands.CommandTree):
   app.add_command(TodoListCommand())
