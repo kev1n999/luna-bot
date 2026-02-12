@@ -1,8 +1,8 @@
 import discord
 from discord import ui 
 from discord import ButtonStyle
-from luna.components.modals.todolist_fields import TaskFields, DeleteTaskById, FindTaskById
-from luna.database.queries.todolist import Task
+from luna.components.modals.todolist_modals import TaskFields, DeleteTaskById, FindTaskById
+from luna.database.queries.todolist_queries import Task
 from luna.core.errors_handler import TaskNotExists
 from luna.utils.find_tasks import find_tasks
 

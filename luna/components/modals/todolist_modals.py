@@ -1,6 +1,6 @@
 import discord 
 from discord import ui, TextStyle
-from luna.database.queries.todolist import Task
+from luna.database.queries.todolist_queries import Task
 from luna.utils.find_tasks import find_tasks
 
 class FindTaskById(ui.Modal):
