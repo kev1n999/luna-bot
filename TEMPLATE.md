@@ -34,8 +34,9 @@ python3 -m luna.main
 
 # Observações 
 > O projeto já está com uns comandos por padrão, mas você pode ficar a vontade pra removê-los e adicionar mais comandos
-> Esse template segue uma estrutura específica e adequada para a criação de comandos, você pode aprender facilmente seguindo as instruções abaixo 
-
+> Esse template segue uma estrutura específica e adequada para a criação de comandos, você pode aprender facilmente seguindo as instruções abaixo
+> É recomendável ter um nível intermediário de conhecimento na linguagem Python e em programação geral, mas em teoria você só precisa seguir o padrão de criação dos comandos
+> Caso não queira usar algum recurso em específico, como banco de dados ou gemini-api, você pode remover algumas partes relacionadas em determinados módulos
 ---
 
 # Como criar novos comandos? 
@@ -98,6 +99,24 @@ def message_setup(register: MessageCommandRegister):
 ```
 
 ---
+
+# Caso não queira usar banco de dados
+1. Remova ou comente a seguinte linha no arquivo `main.py`:
+```py
+from .config.luna_db import luna_db
+```
+### ⚠️ Atenção
+> Ao remover o recurso de banco de dados, comandos padrões que vieram no projeto e interagem com o banco de dados(como o `cogs/utils/todolist.py` não irão funcionar, é recomendável deletar o comando também
+
+---
+
+# Caso não queira usar Gemini API 
+1. Delete o arquivo `services/google_genai.py`(ou a pasta `services` caso não vá utilizar)
+2. Recomendável deletar também o arquivo `services/instructions.txt` pois será desnecessário
+### ⚠️ Atenção
+> Ao remover o recurso de Gemini API, comandos padrões que vieram no projeto e interagem com o Gemimi API (como o `messages/utils/agent.py` não irão funcionar, é recomendável deletar o comando também
+
+--- 
 
 # Se ocorrer algum problema ou bug
 Caso ocorra algum problema, abra uma issue descrevendo o mesmo!
