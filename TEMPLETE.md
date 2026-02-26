@@ -1,6 +1,8 @@
 # Como usar
 Se você deseja usar esse projeto como base ou template para desenvolver seus próprios bots, siga os passos a seguir 
 
+---
+
 # Como funciona
 1. Clone o repositório 
 ```
@@ -28,14 +30,20 @@ GOOGLE_GENAI_KEY= # Chave da API do google-gemini
 python3 -m luna.main
 ```
 
+---
+
 # Observações 
 > O projeto já está com uns comandos por padrão, mas você pode ficar a vontade pra removê-los e adicionar mais comandos
 > Esse template segue uma estrutura específica e adequada para a criação de comandos, você pode aprender facilmente seguindo as instruções abaixo 
+
+---
 
 # Como criar novos comandos? 
 > - Todos os comandos disponíveis, por padrão serão definidos dentro de sub-pastas dentro da pasta `luna/commands`
 > - Pasta cogs: Essa pasta é responsável por armazenar todos os módulos de comandos de barra 
 > - Pasta messages: Essa pasta é responsável por armazenar todos os módulos de comandos de mensagem/prefixo 
+
+---
 
 # Como criar comandos de barra(/)
 1. Crie um novo arquivo `.py` dentro de alguma sub-pasta da pasta `cogs`(ex: cogs/utils/ping.py)
@@ -60,6 +68,8 @@ class Ping(app_commands.Command):
 def setup(app: app_commands.CommandTree):
   app.add_command(Ping())
 ```
+
+---
 
 # Como criar comandos de prefixo/mensagem 
 > 1. Crie um novo arquivo `.py` dentro de alguma sub-pasta da pasta `messages`(ex: messages/utils/ping.py)
@@ -86,3 +96,8 @@ async def ping_command(message: discord.Message, args):
 def message_setup(register: MessageCommandRegister):
   register.register_command_message("ping", ping_command)
 ```
+
+---
+
+# Se ocorrer algum problema ou bug
+Caso ocorra algum problema, abra uma issue descrevendo o mesmo!
