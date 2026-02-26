@@ -14,3 +14,6 @@ Luna is a simple bot for discord :)
 > - Todo-List: Implementation where you can create, delete, update and find tasks!
 > - Admin commands: Ban
 ---
+
+# If you want to use as a template/base for your development
+> Read the **[TEMPLATE.md](https://github.com/kev1n999/luna-bot/blob/main/TEMPLETE.md)**
