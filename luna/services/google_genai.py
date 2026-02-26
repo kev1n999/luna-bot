@@ -1,18 +1,22 @@
-from google import genai 
+import os
+from google import genai
 from luna.config.constants import GOOGLE_GENAI_KEY
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent 
-INSTRUCTIONS_PATH = BASE_DIR / "luna.instructions.txt"
+BASE_DIR = Path(__file__).parent
+INSTRUCTIONS_PATH = BASE_DIR / "luna.instructions.txt" # You can change the instructions in that file
 
-# Acess the TXT file with the instructions for the gemini 
+if not os.path.exists(INSTRUCTIONS_PATH):
+  print("an error ocurred to use genai api: the instructions.txt file do not exists!")
+
+# Acess the TXT file with the instructions for the gemini
 with open(INSTRUCTIONS_PATH, "r") as instructions_file:
   instructions = instructions_file.read()
 
-# Instance of google-genai client 
+# Instance of google-genai client
 genai_client = genai.Client(api_key=GOOGLE_GENAI_KEY)
 
-# Function to send a prompt to gemini-3-flash 
+# Function to send a prompt to gemini-3-flash
 def send_prompt(prompt: str) -> str | None:
   try:
     response = genai_client.models.generate_content(
@@ -22,7 +26,6 @@ def send_prompt(prompt: str) -> str | None:
         system_instruction=instructions
       )
     )
-
     return response.text
   except Exception as err:
     print(err)
