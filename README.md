@@ -15,5 +15,5 @@ Luna is a simple bot for discord :)
 > - Admin commands: Ban
 ---
 
-# If you want to use as a template/base for your development
+# If you want to use as a template/base for your project
 > Read the **[TEMPLATE.md](https://github.com/kev1n999/luna-bot/blob/main/TEMPLETE.md)**
