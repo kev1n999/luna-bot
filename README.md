@@ -16,4 +16,4 @@ Luna is a simple bot for discord :)
 ---
 
 # If you want to use as a template/base for your project
-> Read the **[TEMPLATE.md](https://github.com/kev1n999/luna-bot/blob/main/TEMPLETE.md)**
+> Read the **[TEMPLATE.md](https://github.com/kev1n999/luna-bot/blob/main/TEMPLATE.md)**
