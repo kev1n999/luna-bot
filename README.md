@@ -1,19 +1,32 @@
-# ⚡ Luna
-Luna is a simple bot for discord :)
+# Luna - Clean/Template 
+Essa é uma versão do projeto principal, mas focado em oferecer um template mais "limpo", sem recursos adicionais como database e serviçoes extras. 
 
-<img src="https://github.com/kev1n999/luna-bot/blob/main/luna/assets/luna_banner.png" style="height: 190px;">
+--- 
 
-# Tools used
-> - Python3 <a href="https://www.python.org/">See more</a>
-> - Discord.py <a href="https://discordpy.readthedocs.io/en/stable/">See more</a>
-> - Google Genai <a href="https://pypi.org/project/google-genai/">See more</a>
-> - Pymongo / MongoDB <a href="https://pymongo.readthedocs.io/en/stable/">See more</a>
----
-# ![Features](https://img.shields.io/badge/Features-Implemented-8A2BE2?style=for-the-badge)
-> - Genai-Agent: Talk with a AI agent using the google gemini api
-> - Todo-List: Implementation where you can create, delete, update and find tasks!
-> - Admin commands: Ban
----
+# Como usar
+1. Clone essa branch do repositório
+```
+git clone -b clean/template --single-branch https://github.com/kev1n999/luna-bot
+```
+2. Abra a pasta raiz do projeto em seu editor de texto/código
+3. Crie um ambiente virtual dentro dessa pasta
+```
+python3 -m venv venv ou python -m venv venv 
+source venv/bin/activate ou(no windows) venv\Scripts\activate
+```
+4. Instale as bibliotecas necessárias
+```
+pip3 install -r requirements.txt ou pip install -r requirements.txt
+```
+5. Crie um arquivo .env(ainda na pasta raiz), e preencha as seguintes váriaveis
+```
+BOT_TOKEN= # Token do bot 
+DEFAULT_PREFIX= # Prefixo dos comandos de mensagens
+```
+6. Inicie o bot
+```
+python3 -m luna.main
+```
 
-# If you want to use as a template/base for your project
-> Read the **[TEMPLATE.md](https://github.com/kev1n999/luna-bot/blob/main/TEMPLATE.md)**
+# Como criar novos comandos?
+> Para saber mais, leia a parte sobre "Como criar comandos" em **[README](https://github.com/kev1n999/luna-bot/blob/main/TEMPLATE.md)**
