@@ -4,7 +4,6 @@ if __name__ == "__main__":
   from .config.constants import BOT_TOKEN, DEFAULT_PREFIX
   from .core.cogs_handler import load_cogs
   from .core.message_handler import load_messages
-  from .config.luna_db import luna_db
   from .core.message_register import MessageCommandRegister
 
   ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
