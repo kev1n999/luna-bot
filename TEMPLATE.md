@@ -116,6 +116,10 @@ from .config.luna_db import luna_db
 ### ⚠️ Atenção
 > Ao remover o recurso de Gemini API, comandos padrões que vieram no projeto e interagem com o Gemimi API (como o `messages/utils/agent.py` não irão funcionar, é recomendável deletar o comando também
 
+# Melhor recomendação
+> Use a versão mais limpa do template(sem banco de dados nem google-genai), é só instalar as dependências, configurar token e prefixo, e iniciar o bot
+> Para usar, clique **[aqui](https://github.com/kev1n999/luna-bot/tree/clean/template)**
+
 --- 
 
 # Se ocorrer algum problema ou bug
